@@ -9,4 +9,5 @@ int main(){
 
     int a=9,b=5;
     cout<<a+b<<endl;
+    cout<<a-b<<endl;
 }
