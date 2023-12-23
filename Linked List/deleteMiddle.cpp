@@ -56,4 +56,5 @@ Node* deleteMiddle(Node* head){
         delete slow; // Deallocate the memory of the middle node
 
         return head;
+        
 }
