@@ -48,3 +48,41 @@ Node* reverseLinkedList(Node *head)
 
     return new_head;
 }
+
+/****************************************************************
+
+    Following is the class structure of the LinkedListNode class:
+
+    template <typename T>
+    class LinkedListNode
+    {
+    public:
+        T data;
+        LinkedListNode<T> *next;
+        LinkedListNode(T data)
+        {
+            this->data = data;
+            this->next = NULL;
+        }
+    };
+
+*****************************************************************/
+
+// template <typename T>
+// LinkedListNode<T> *reverseLinkedList(LinkedListNode<T> *head) 
+// {
+//     LinkedListNode<T> *prev = nullptr;
+//     LinkedListNode<T> *current = head;
+//     LinkedListNode<T> *next = nullptr;
+
+//     while (current != nullptr) {
+//         next = current->next;  // Save the next node
+//         current->next = prev;  // Reverse the link
+
+//         // Move to the next nodes
+//         prev = current;
+//         current = next;
+//     }
+
+//     return prev;  // The new head is the last node (previously the tail)
+// }
