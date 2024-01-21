@@ -30,9 +30,9 @@ int main() {
     // Example usage
     int num = 16;
     if (isPerfectSquare(num)) {
-        std::cout << num << " is a perfect square." << std::endl;
+        cout << num << " is a perfect square." << endl;
     } else {
-        std::cout << num << " is not a perfect square." << std::endl;
+        cout << num << " is not a perfect square." <<endl;
     }
 
     return 0;
