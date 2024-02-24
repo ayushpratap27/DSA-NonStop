@@ -1,0 +1,17 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int finalValueAfterOperations(vector<string>& operations) {
+    int x = 0;
+    int n = operations.size();
+    for(int i=0;i<n;i++){
+        if(operations[i]=="--X" || operations[i]=="X--"){
+            x-=1;
+        }else{
+            x+=1;
+        }
+    }
+
+    return x;
+
+}
