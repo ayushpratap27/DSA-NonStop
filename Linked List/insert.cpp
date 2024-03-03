@@ -21,19 +21,19 @@ class Node {
 Node *insert(Node *head, int n, int pos, int val) {
     Node *newNode = new Node(val);
 
-    if (pos == 0) {
+    if(pos == 0){
         newNode->next = head;
         return newNode;
     }
 
     Node *current = head;
-    for (int i = 0; i < pos - 1 && current != nullptr; ++i) {
+    for(int i=0;i<pos-1 && current!=nullptr;i++) {
         current = current->next;
     }
 
-    if (current != nullptr) {
-        newNode->next = current->next;
-        current->next = newNode;
+    if(current!=nullptr){
+        newNode->next=current->next;
+        current->next=newNode;
     }
 
     return head;
