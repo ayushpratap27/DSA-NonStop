@@ -17,3 +17,17 @@ int numJewelsInStones(string jewels, string stones) {
 
     return count;
 }
+
+// int numJewelsInStones(string j, string s) {
+//         unordered_map<char, int> gems;
+//         for(int i=0; i<s.size(); i++){
+//             gems[s[i]]++;
+//         }
+//         int sum=0;
+//         for(auto i: gems){
+//             if(j.find(i.first) != string::npos) {
+//                 sum += i.second;
+//             }
+//         }
+//         return sum;
+// }
