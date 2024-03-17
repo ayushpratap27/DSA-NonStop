@@ -11,7 +11,7 @@ vector<int> findArray(vector<int>& pref) {
     // return arr;
 
     //time/space: O(n)/O(1)
-    for(int i=pref.size()-1;i>0;i--`){
+    for(int i=pref.size()-1;i>0;i--){
         pref[i]^=pref[i-1];
     }
     
