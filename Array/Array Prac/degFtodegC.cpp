@@ -2,6 +2,9 @@
 using namespace std;
 
 vector<vector<int>> fahrenheitToCelsius(int s, int e, int w){
+
+    //C=5*(F-32)/9
+    
 	int n = (e-s)/w;
 	vector<vector<int>> v;
 	for (int i=0; i<=n ;i++) {
