@@ -1,21 +1,27 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-
-bool isPalindrome (const string &s) {
-    int left = 0, right = s.length() - 1;
-
-    while (left<=right) {
-        if (s[left++] != s[right--])
-            return false;
-    } 
-        
-    return true; 
-}
 string firstPalindrome(vector<string>& words) {
-    for (string s : words)
-        if(isPalindrome(s))
-            return s;
-                
-    return "" ;
+    for (const string& str : words) {
+        int left = 0;
+        int right = str.length() - 1;
+        bool flag=true;
+        while (left < right) {
+            if (str[left] != str[right]) {
+               flag=false;
+            }
+            left++;
+            right--;
+        }
+        if(flag) return str;
+    }
+    return "";
 }
+
+auto init = []()
+{ 
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    return 'c';
+}();
