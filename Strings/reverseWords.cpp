@@ -2,31 +2,28 @@
 using namespace std;
 
 string reverseWords(string s) {
-    istringstream iss(s);
-    vector<string> words;
+    int n = s.size();
+    string ans = "";
+    int i = 0;
 
-    // Extract words from the string
-    do {
-        string word;
-        iss >> word;
-        if (!word.empty()) {
-            words.push_back(word);
+    while(i < n){
+        string temp = "";
+        while(i < n && s[i] == ' ')i++;
+
+        while(i < n && s[i] != ' '){
+            temp += s[i];
+            i++;
         }
-    } while (iss);
 
-    // Reverse the order of words
-    reverse(words.begin(), words.end());
-
-    // Concatenate the words with a single space
-    string result;
-    for (const string& word : words) {
-        result += word + " ";
+        if(!temp.empty()){
+            if(ans.empty()){
+                ans = temp;
+            }else{
+                ans = temp + " " + ans;
+            }
+        }
     }
 
-    // Remove the trailing space, if any
-    if (!result.empty() && result.back() == ' ') {
-        result.pop_back();
-    }
-
-    return result;
+    return ans;
 }
+//  T.C.= O(n)   S.C.= O(n)
