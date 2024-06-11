@@ -1,8 +1,8 @@
 # Operators
 
 ### AND 
-       all true - True
-       1 false - false
+        all true - True
+        1 false - false
 
 ### OR 
         1 true -> true
