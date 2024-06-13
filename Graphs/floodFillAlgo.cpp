@@ -29,3 +29,17 @@ vector<vector<int>> floodFill(vector<vector<int>> &image, int x, int y, int newC
 
     return ans;
 }
+
+/*
+The time complexity of the floodFill function is O(n*m) where n is the number of rows 
+and m is the number of columns in the image matrix. This is because in the worst case 
+scenario, the function may need to visit every cell in the matrix to perform the flood fill operation.
+
+The space complexity of the floodFill function is also O(n*m) because we are using a separate 
+2D matrix to store the result of the flood fill operation, which has the same dimensions as the 
+input image matrix. Additionally, the recursive calls in the DFS function may consume additional 
+space on the call stack, but it is bounded by the size of the input matrix.
+
+Overall, the time and space complexity of the floodFill function is O(n*m) due to the need to visit 
+every cell in the matrix and store the result of the flood fill operation in a separate matrix.
+*/
