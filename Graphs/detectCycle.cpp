@@ -1,34 +1,79 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-class Graph {
-public:
-    bool isCyclicUtil(int v, bool visited[], int parent, vector<int> adj[]) {
-        visited[v] = true; 
+//*********** Using BFS ************/
+bool detect(int src,vector<int> adj[],int vis[]){
+    vis[src] = 1;
+    queue<pair<int,int>> q;
+    q.push({src,-1});
 
-            for (int i = 0; i < adj[v].size(); i++) {
-            int adjNode = adj[v][i];
-            if (!visited[adjNode]) {
-                if (isCyclicUtil(adjNode, visited, v, adj))
-                    return true;
-            }
-            else if (adjNode != parent)
+    while(!q.empty()){
+        int node = q.front().first;
+        int parent = q.front().second;
+        q.pop();
+
+        for(auto adjNode : adj[node]){
+            if(!vis[adjNode]){
+                vis[adjNode] = 1;
+                q.push({adjNode,node});
+            }else if(parent != adjNode){
                 return true;
-        }
-        return false;
-    }
-
-    bool detectCycle(int V, vector<int> adj[]) {
-        bool visited[V];
-        for (int i = 0; i < V; i++)
-            visited[i] = false;
-
-        for (int i = 0; i < V; i++) {
-            if (!visited[i]) {
-                if (isCyclicUtil(i, visited, -1, adj))
-                    return true; 
             }
         }
-        return false; 
     }
-};
+
+    return false;
+}
+
+bool isCycle(int V,vector<int> adj[]){
+    int vis[V];
+    for(int i=0;i<V;i++){
+        if(!vis[i]){
+            if(detect(i,adj,vis)){
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
+//  T.C. = O(N + 2E) + O(N)
+//  S.C. = O(N)
+
+// Summation(adjacent node) = summation(degree) = 2E(undirected)
+//                                              = E(directed)
+
+
+
+
+//************* Using BFS **************/
+bool dfs(int node,int parent,int vis[],vector<int> adj[]){
+    vis[node] = 1;
+    for(auto adjNode : adj[node]){
+        if(!vis[adjNode]){
+            if(dfs(adjNode,node,vis,adj) == true){
+                return true;
+            }
+        }else if(parent != adjNode){
+            return true;
+        }
+    }
+
+    return false;
+}
+
+
+bool detectCycle(int v,vector<int> adj[]){
+    int vis[v] = {0};
+    for(int i=0;i<v;i++){
+        if(!vis[i]){
+            if(dfs(i,-1,vis,adj) == true){
+                return true;
+            }
+        }
+    }
+
+    return false;
+
+}
