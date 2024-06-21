@@ -42,3 +42,49 @@ bool isCyclic(int v,vector<int> adj[]){
 
 // T.C. = O(v + e) as it is directed path
 // S.C. = O(2n)
+
+
+//********************Using BFS - toposort*********************
+
+bool isCyclic(int v,vector<int>adj[]){
+    int indegree[v] = {0};
+    for(int i=0;i<v;i++){
+        for(auto it : adj[i]){
+            indegree[it]++;
+        }
+    }
+
+    queue<int> q;
+    for(int i=0;i<v;i++){
+        if(indegree[i] == 0){
+            q.push(i);
+        }
+    }
+
+    int cnt = 0;
+    while(!q.empty()){
+        int node = q.front();
+        q.pop();
+        cnt++;
+
+        for(auto it : adj[node]){
+            indegree[it]--;
+            if(indegree[it] == 0){
+                q.push(it);
+            }
+        }
+    }
+
+    if(cnt == v) return false;
+
+    return true;
+}
+
+/*
+The time complexity of the isCyclic function is O(V + E), where V is the number of vertices 
+and E is the number of edges in the graph. This is because we are iterating through all the vertices 
+and edges in the graph to calculate the indegree of each vertex and then perform a topological sort 
+using a queue.
+
+The space complexity is O(V) for the indegree array and the queue used for the topological sort.
+*/
