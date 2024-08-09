@@ -75,3 +75,15 @@ int minPathSum(vector<vector<int>>& grid) {
     }
     return prev[m-1];
 }
+
+
+/*
+The time complexity of this solution is O(n*m), where n is the number of rows in the grid 
+and m is the number of columns in the grid. This is because we iterate through each cell in 
+the grid once and perform constant time operations.
+
+The space complexity is O(m), where m is the number of columns in the grid. This is because 
+we only use two vectors of size m to store the minimum path sum values for the current row and 
+the previous row.
+
+*/
