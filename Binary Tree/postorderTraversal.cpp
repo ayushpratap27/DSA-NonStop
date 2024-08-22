@@ -11,17 +11,17 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-vector<int> postorderTraversal(TreeNode *root){
-    vector<int>result;
-    postorderTraversalHelper(root, result);
-    return result;
-}
-void postorderTraversalHelper(TreeNode *root, vector<int> &result){
+void preOrder(TreeNode *root, vector<int> &result){
     if(root==nullptr) 
     return;
 
-    postorderTraversalHelper(root->left, result);
-    postorderTraversalHelper(root->right, result);
+    preOrder(root->left, result);
+    preOrder(root->right, result);
 
     result.push_back(root->val);
+}
+vector<int> postorderTraversal(TreeNode *root){
+    vector<int>result;
+    preOrder(root, result);
+    return result;
 }
