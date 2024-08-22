@@ -1,9 +1,6 @@
-#include <iostream>
-#include <vector>
-
+#include<bits/stdc++.h>
 using namespace std;
 
-// Definition for a binary tree node.
 struct TreeNode {
     int val;
     TreeNode* left;
@@ -14,37 +11,27 @@ struct TreeNode {
 };
 
 class Solution {
+private:
+    void inOrder(TreeNode* node, vector<int>& result) {
+        if (node == nullptr) return;        
+
+        inOrder(node->left, result);
+        result.push_back(node->val);
+        inOrder(node->right, result);
+    }
 public:
     vector<int> inorderTraversal(TreeNode* root) {
         vector<int> result;
-        inorderHelper(root, result);
+        inOrder(root, result);
         return result;
-    }
-
-private:
-    void inorderHelper(TreeNode* node, vector<int>& result) {
-        if (node == nullptr) {
-            return;
-        }
-
-        // Recursively traverse the left subtree
-        inorderHelper(node->left, result);
-
-        // Process the current node
-        result.push_back(node->val);
-
-        // Recursively traverse the right subtree
-        inorderHelper(node->right, result);
     }
 };
 
 int main() {
-    // Example usage
     TreeNode* root = new TreeNode(1, nullptr, new TreeNode(2, new TreeNode(3), nullptr));
     Solution solution;
     vector<int> result = solution.inorderTraversal(root);
 
-    // Display the result
     cout << "In-Order Traversal: ";
     for (int num : result) {
         cout << num << " ";
