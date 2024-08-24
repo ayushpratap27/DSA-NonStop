@@ -13,9 +13,7 @@ struct TreeNode {
 
 
 int calculateDiameter(TreeNode* root, int& diameter) {
-    if (root == nullptr) {
-        return 0;
-    }
+    if (root == nullptr) return 0;
 
     int leftDepth = calculateDiameter(root->left, diameter);
     int rightDepth = calculateDiameter(root->right, diameter);
@@ -27,5 +25,6 @@ int calculateDiameter(TreeNode* root, int& diameter) {
 int diameterOfBinaryTree(TreeNode* root){
     int diameter = 0;
     calculateDiameter(root, diameter);
+
     return diameter;
 }
