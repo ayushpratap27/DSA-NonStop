@@ -18,13 +18,11 @@ class TreeNode {
 };
 
 
-int maxPathSumUtil(TreeNode<int>* root, int& maxSum) {
-    if(root == NULL){
-        return 0;
-    }
+int maxPathDown(TreeNode<int>* root, int& maxSum) {
+    if(root == NULL) return 0;
 
-    int leftSum = max(0, maxPathSumUtil(root->left, maxSum));
-    int rightSum = max(0, maxPathSumUtil(root->right, maxSum));
+    int leftSum = max(0, maxPathDown(root->left, maxSum));
+    int rightSum = max(0, maxPathDown(root->right, maxSum));
 
     maxSum = max(maxSum, root->val + leftSum + rightSum);
 
@@ -33,6 +31,6 @@ int maxPathSumUtil(TreeNode<int>* root, int& maxSum) {
 
 int maxPathSum(TreeNode<int>* root) {
     int maxSum = INT_MIN; 
-    maxPathSumUtil(root, maxSum);
+    maxPathDown(root, maxSum);
     return maxSum;
 }
