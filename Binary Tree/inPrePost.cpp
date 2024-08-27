@@ -87,6 +87,7 @@ vector<vector<int>> preInPostTraversal(TreeNode* root){
         // this is part of post
         // increment 3 to 4
         // pop the node from the stack
+        
         else{
             post.push_back(it.first->data);
         }
