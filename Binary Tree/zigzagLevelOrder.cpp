@@ -47,3 +47,11 @@ vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
 
     return result;
 }
+
+
+//The time complexity of this algorithm is O(n), where n is the number of nodes in the binary tree. 
+//This is because we are visiting each node once in a level order traversal using a queue.
+
+//The space complexity is also O(n), as in the worst case scenario, the queue can hold all 
+//the nodes at the last level of the binary tree, which can be at most n/2 nodes. Additionally, the 
+//result vector will also hold all the nodes in the tree.
