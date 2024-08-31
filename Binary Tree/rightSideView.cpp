@@ -23,3 +23,11 @@ vector<int> rightSideView(TreeNode* root) {
     solve(root,0);
     return ans;
 }
+
+/*
+The time complexity of the given code is O(n) where n is the number of nodes in the binary tree. 
+This is because we are visiting each node exactly once in a depth-first manner.
+
+The space complexity of the given code is O(h) where h is the height of the binary tree. 
+This is because the recursive function calls will be stored in the call stack up to the height of the tree.
+*/
