@@ -17,3 +17,6 @@ int chalkReplacer(vector<int>& chalk, int k) {
 
     return -1;
 }
+
+//  Time Complexity :- O(n)
+//  Space Complexity :- O(1)
