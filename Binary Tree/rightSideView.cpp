@@ -10,17 +10,18 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-vector<int> ans;
-void solve(TreeNode* root,int l){
-    if(root==NULL){
-        return;
-    }
-    if(ans.size()==l) ans.push_back(root->val);
-    solve(root->right,l+1);
-    solve(root->left,l+1);
+
+void recursion(TreeNode* root, int level, vector<int>& ans){
+    if(root == NULL) return;
+    if(ans.size() == level) ans.push_back(root->val);
+    recursion(root->right, level+1, ans);
+    recursion(root->left, level+1, ans);
 }
+
 vector<int> rightSideView(TreeNode* root) {
-    solve(root,0);
+    vector<int> ans;
+    recursion(root, 0, ans);
+
     return ans;
 }
 
