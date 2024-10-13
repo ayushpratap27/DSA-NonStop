@@ -6,7 +6,7 @@ vector<int> mergeKArrays(vector<vector<int>> arr, int K) {
     int n = arr.size();
     vector<pair<int, pair<int, int>>> temp;
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < K; i++) {
         temp.push_back(make_pair(arr[i][0], make_pair(i, 0)));
     }
 
@@ -32,4 +32,5 @@ vector<int> mergeKArrays(vector<vector<int>> arr, int K) {
     }
 
     return ans; 
-}
+} 
+
