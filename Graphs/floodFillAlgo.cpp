@@ -1,6 +1,36 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// void bfs(int row, int col, vector<vector<int>> &image,
+//          vector<vector<int>> &ans, int initialColor, int color)
+// {
+//     int n = image.size();
+//     int m = image[0].size();
+//     ans[row][col] = color;
+//     queue<pair<int, int>> q;
+//     q.push({row, col});
+//     while (!q.empty())
+//     {
+//         int r = q.front().first;
+//         int c = q.front().second;
+//         q.pop();
+//         int directions[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+
+//         for (auto &dir : directions)
+//         {
+//             int newRow = r + dir[0];
+//             int newCol = c + dir[1];
+
+//             if (newRow >= 0 && newRow < n && newCol >= 0 && newCol < m &&
+//                 ans[newRow][newCol] != color && image[newRow][newCol] == initialColor)
+//             {
+//                 ans[newRow][newCol] = color;
+//                 q.push({newRow, newCol});
+//             }
+//         }
+//     }
+// }
+
 void dfs(int row,int col,vector<vector<int>> &ans,vector<vector<int>> &image,
 int newColor,int delRow[],int delCol[],int iniColor){
     ans[row][col]=newColor;
