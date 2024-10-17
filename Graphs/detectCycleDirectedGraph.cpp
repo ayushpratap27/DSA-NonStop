@@ -1,6 +1,47 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// bool detectCycleDFS(int node, vector<int> &visited, vector<int> adj[])
+// {
+//     // Put node into Answer
+//     visited[node] = 1;
+//     visited[node] = 2; // pathVisited
+
+//     // Run DFS on all it's non-visited neighbours
+//     for (auto neigh : adj[node])
+//     {
+//         if (!visited[neigh])
+//         {
+//             if (detectCycleDFS(neigh, visited, adj))
+//                 return true; // If any one of the DFS calls returns a True, we keep on returning True
+//         }
+//         else if (visited[neigh] == 2)
+//         { // If a node is visited again on same path, cycle is detected (visited node is also pathVisited)
+//             return true;
+//         }
+//     }
+
+//     // On coming back, omit the node from pathVisited as path is gonna be different now
+//     visited[node] = 1;
+
+//     return false;
+// }
+
+// bool isCyclic(int V, vector<int> adj[])
+// {
+//     vector<int> visited(V, 0); // Behaves as both visited (value = 1) & pathVisited (value = 2)
+
+//     for (int i = 0; i < V; i++)
+//     {
+//         if (!visited[i])
+//         {
+//             if (detectCycleDFS(i, visited, adj))
+//                 return true; // We say graph to have a cycle if any of it's components have a cycle
+//         }
+//     }
+
+//     return false;
+// }
 
 bool dfs(int node,vector<int> adj[],int vis[],int pathVis[]){
     vis[node] = 1;
