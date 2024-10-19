@@ -1,6 +1,36 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+void bfs(int row, int col, vector<vector<char>> &board, vector<vector<int>> &vis){
+    int n = board.size();
+    int m = board[0].size();
+    vis[row][col] = 1;
+    queue<pair<int, int>> q;
+    q.push({row, col});
+
+    int delRow[] = {-1, 0, 1, 0};
+    int delCol[] = {0, 1, 0, -1};
+
+    while (!q.empty())
+    {
+        int r = q.front().first;
+        int c = q.front().second;
+        q.pop();
+
+        for (int i = 0; i < 4; i++)
+        {
+            int newRow = r + delRow[i];
+            int newCol = c + delCol[i];
+
+            if (newRow >= 0 && newRow < n && newCol >= 0 && newCol < m && !vis[newRow][newCol] && board[newRow][newCol] == 'O')
+            {
+                vis[newRow][newCol] = 1;
+                q.push({newRow, newCol});
+            }
+        }
+    }
+}
+
 void dfs(int row,int col,vector<vector<int>> &vis,vector<vector<char>> &board,
 int delrow[],int delcol[]){
         int n = board.size();

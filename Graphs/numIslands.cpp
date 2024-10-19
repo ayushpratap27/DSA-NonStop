@@ -1,6 +1,24 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// void dfs(int row, int col, vector<vector<char>> &grid, vector<vector<int>> &vis){
+//     int n = grid.size();
+//     int m = grid[0].size();
+//     vis[row][col] = 1;
+//     int directions[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+
+//     for (auto &dir : directions)
+//     {
+//         int newRow = row + dir[0];
+//         int newCol = col + dir[1];
+
+//         if (newRow >= 0 && newRow < n && newCol >= 0 && newCol < m &&
+//             !vis[newRow][newCol] && grid[newRow][newCol] == '1')
+//         {
+//             dfs(newRow, newCol, grid, vis);
+//         }
+//     }
+// }
 
 void bfs(int row, int col, vector<vector<int>> &vis, vector<vector<char>> &grid) {
         vis[row][col] = 1;
