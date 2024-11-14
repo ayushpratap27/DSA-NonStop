@@ -19,7 +19,6 @@ vector<int> nextLargerNodes(ListNode *head){
         temp = temp->next;
     }
     int n = nums.size();
-    cout << n;
     vector<int> nge(n, 0);
     stack<int> st;
     for (int i = n - 1; i >= 0; i--){
