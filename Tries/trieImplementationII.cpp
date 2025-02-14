@@ -78,78 +78,103 @@ using namespace std;
 
 struct Node {
     Node* links[26];
-    bool flag = false;
+    int endWith = 0;
+    int countPrefix = 0;
 
-    bool containsKey(char ch) {
-        return (links[ch - 'a'] != NULL);
+    bool containsKey(char c) {
+        return links[c - 'a'] != NULL;
     }
 
-    void put(char ch, Node* node) {
-        links[ch - 'a'] = node;
+    Node* get(char c) {
+        return links[c - 'a'];
     }
 
-    Node* get(char ch) {
-        return links[ch - 'a'];
+    void put(char c, Node* node) {
+        links[c - 'a'] = node;
     }
 
-    bool setEnd() {
-        flag = true;
+    void increaseEnd() {
+        endWith++;
     }
 
-    bool isEnd() {
-        return flag;
+    void increasePrefix() {
+        countPrefix++;
     }
+
+    void deleteEnd() {
+        endWith--;
+    }
+
+    void reducePrefix() {
+        countPrefix--;
+    }
+
+    int getEnd() {
+        return endWith;
+    }
+
+    int getPrefix() {
+        return countPrefix;
+    }
+
 };
 
 class Trie {
     Node* root;
-    public:
-
+public:
     Trie() {
         root = new Node();
     }
 
-    void insert(string &word) {
-        Node* temp = root;
-        for (char c : word) {
-            if (!temp->containsKey(c)) {
-                temp->put(c, new Node());
+    void insert(string word) {
+        Node* node = root;
+        for (int i = 0; i < word.size(); i++) {
+            char currentChar = word[i];
+            if (!node->containsKey(currentChar)) {
+                node->put(currentChar, new Node());
             }
-            temp = temp->get(c);
+            node = node->get(currentChar);
+            node->increasePrefix();
         }
-        temp->setEnd();
+        node->increaseEnd();
     }
 
-    int countWordsEqualTo(string &word) {
-        Node* temp = root;
-        for (char c : word) {
-            if (!temp->containsKey(c)) {
+    int countWordsEqualTo(string word) {
+        Node* node = root;
+        for (int i = 0; i < word.size(); i++) {
+            char currentChar = word[i];
+            if (!node->containsKey(currentChar)) {
                 return 0;
             }
-            temp = temp->get(c);
+            node = node->get(currentChar);
         }
-        return temp->isEnd();
+        return node->getEnd();
     }
 
-    int countWordsStartingWith(string &prefix) {
-        Node* temp = root;
-        for (char c : prefix) {
-            if (!temp->containsKey(c)) {
+    int countWordsStartingWith(string prefix) {
+        Node* node = root;
+        for (int i = 0; i < prefix.size(); i++) {
+            char currentChar = prefix[i];
+            if (!node->containsKey(currentChar)) {
                 return 0;
             }
-            temp = temp->get(c);
+            node = node->get(currentChar);
         }
-        return 1;
+        return node->getPrefix();
     }
 
-    void erase(string &word) {
-        Node* temp = root;
-        for (char c : word) {
-            if (!temp->containsKey(c)) {
-                return;
+    void erase(string word) {
+        if (countWordsEqualTo(word) > 0) {
+            Node* node = root;
+            for (int i = 0; i < word.size(); i++) {
+                if(node->containsKey(word[i])) {
+                    node = node->get(word[i]);
+                    node->reducePrefix();
+                } else {
+                    return;
+                }
             }
-            temp = temp->get(c);
+            node->deleteEnd();
         }
-        temp->flag = false;
     }
 };
